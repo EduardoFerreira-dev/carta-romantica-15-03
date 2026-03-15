@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nossa História</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#f7e6ff,#e4c3ff);
+font-family:'Dancing Script',cursive;
+overflow:hidden;
+}
+
+/* CORAÇÕES CAINDO */
+
+.coracoes{
+position:fixed;
+width:100%;
+height:100%;
+pointer-events:none;
+}
+
+.coracao{
+position:absolute;
+font-size:22px;
+color:#ff4da6;
+animation:cair linear infinite;
+}
+
+@keyframes cair{
+
+0%{
+transform:translateY(-10vh);
+opacity:1;
+}
+
+100%{
+transform:translateY(110vh);
+opacity:0;
+}
+
+}
+
+/* ENVELOPE */
+
+.envelope{
+
+width:320px;
+height:200px;
+background:#d9aaff;
+border-radius:12px;
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+box-shadow:0 10px 40px rgba(0,0,0,0.2);
+
+}
+
+.coracao-btn{
+
+font-size:45px;
+animation:brilho 1.4s infinite;
+
+}
+
+@keyframes brilho{
+
+0%{transform:scale(1)}
+50%{transform:scale(1.25)}
+100%{transform:scale(1)}
+
+}
+
+/* CARTA */
+
+.carta{
+
+display:none;
+width:92%;
+max-width:420px;
+height:82vh;
+background:white;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
+padding:20px;
+flex-direction:column;
+animation:subir 1s;
+
+}
+
+@keyframes subir{
+
+from{transform:translateY(100px);opacity:0}
+to{transform:translateY(0);opacity:1}
+
+}
+
+/* FOTO */
+
+.foto{
+height:160px;
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+margin-bottom:15px;
+}
+
+.foto img{
+max-width:100%;
+max-height:160px;
+border-radius:15px;
+object-fit:contain;
+}
+
+/* TEXTO */
+
+.texto{
+
+flex:1;
+overflow-y:auto;
+font-size:22px;
+line-height:1.6;
+color:#6d2ca8;
+
+}
+
+/* PLAYER */
+
+.player{
+
+display:none;
+background:#f4e8ff;
+border-radius:15px;
+padding:12px;
+margin-top:10px;
+flex-direction:column;
+
+}
+
+.controls{
+
+display:flex;
+align-items:center;
+gap:10px;
+
+}
+
+.play{
+
+background:#d9aaff;
+border:none;
+color:white;
+font-size:18px;
+padding:8px 14px;
+border-radius:10px;
+cursor:pointer;
+
+}
+
+.barra{
+
+width:100%;
+height:6px;
+background:#ddd;
+border-radius:10px;
+margin-top:6px;
+
+}
+
+.progresso{
+
+height:6px;
+width:0%;
+background:#d9aaff;
+border-radius:10px;
+
+}
+
+/* TEMPO */
+
+.tempo{
+
+text-align:center;
+margin-top:8px;
+font-size:18px;
+color:#7c3bb5;
+white-space: pre-line;
+overflow-wrap: break-word;
+
+}
+
+/* FINAL */
+
+.final{
+
+display:none;
+text-align:center;
+font-size:26px;
+color:#ff4da6;
+margin-top:10px;
+animation:aparecer 2s;
+
+}
+
+@keyframes aparecer{
+
+from{opacity:0}
+to{opacity:1}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="coracoes" id="coracoes"></div>
+
+<div class="envelope" id="envelope" onclick="abrirCarta()">
+
+<div class="coracao-btn">💌</div>
+
+</div>
+
+<div class="carta" id="carta">
+
+<div class="foto">
+<img src="midias/foto.jpg">
+</div>
+
+<div class="texto" id="texto"></div>
+
+<div class="player" id="player">
+
+<div class="controls">
+
+<button class="play" id="botaoPlay" onclick="tocar()">▶</button>
+
+<span>Nossa música</span>
+
+</div>
+
+<div class="barra">
+
+<div class="progresso" id="progresso"></div>
+
+</div>
+
+</div>
+
+<div class="tempo" id="tempo"></div>
+
+<div class="final" id="final">
+
+💖 Para sempre nós dois 💖
+
+</div>
+
+<audio id="musica">
+<source src="midias/musica.mp3">
+</audio>
+
+</div>
+
+<script>
+
+const mensagem = `Meu amor, boa noite.
+
+A princípio de tudo,<br> gostaria de dizer que estou escrevendo essa carta somente para demonstrar o que realmente estou sentindo por você. De forma nenhuma eu quero que você se sinta triste ou mal com qualquer coisa. Você não tem culpa de nada, viu?
+Estou vindo, por meio dessa carta, dizer que te amo muito. Nesse tempo inicial em que você foi embora não foi tão difícil para mim, mas há uns dois dias as coisas estão ficando bem complicadas sem você. É como se eu estivesse vendo você junto comigo e eu não pudesse conversar com você, nem tocar em você, e isso está me quebrando.
+Eu nunca senti tanta saudade de algo ou de alguém dessa forma. Eu nunca liguei muito para essas coisas; para mim, se não estivesse perto, não iria mudar nada. Mas, amor, isso está me consumindo. Eu não fui feito de forma alguma para ficar longe de você. Eu necessito de você tanto quanto de água para sobreviver. Seu toque é essencial para mim.
+Gostaria tanto de poder ir até você hoje, simplesmente para te dar aquele abraço apertado e nunca mais soltar. Eu estou ficando doido aqui já. Não consigo esquecer você por nada. Tento me distrair, mas tudo me lembra você, literalmente tudo.
+E eu só estou percebendo, a cada dia mais, que sou completamente apaixonado por você e que necessito muito me casar logo com você.
+Quero muito ver uma mini você correndo em nossa casa, me chamando de papai, querendo brincar com a gente e trazendo a alegria mais desejada da minha vida.
+Minha cabeça está 24 horas por dia com essa música e pensando em realizar tudo isso logo com você.
+Volta logo pra mim, amor. Não quero viver longe de você mais não.❤️`;
+
+let i=0;
+
+function abrirCarta(){
+
+document.getElementById("envelope").style.display="none";
+
+document.getElementById("carta").style.display="flex";
+
+digitar();
+
+}
+
+function digitar(){
+
+if(i < mensagem.length){
+
+document.getElementById("texto").innerHTML += mensagem.charAt(i);
+
+i++;
+
+setTimeout(digitar,30);
+
+}else{
+
+document.getElementById("player").style.display="flex";
+
+document.getElementById("final").style.display="block";
+
+explosaoCoracoes();
+
+}
+
+}
+
+function tocar(){
+
+const musica = document.getElementById("musica");
+const botao = document.getElementById("botaoPlay");
+
+if(musica.paused){
+
+musica.play();
+botao.innerHTML = "⏸";
+
+}else{
+
+musica.pause();
+botao.innerHTML = "▶";
+
+}
+
+}
+
+/* CONTADOR */
+
+function atualizarTempo(){
+
+const inicio=new Date("2024-04-19T21:00:00");
+
+const agora=new Date();
+
+let diff=agora-inicio;
+
+let dias=Math.floor(diff/(1000*60*60*24));
+
+document.getElementById("tempo").innerHTML="Juntos há "+dias+" dias ❤️";
+
+}
+
+setInterval(atualizarTempo,1000);
+
+atualizarTempo();
+
+/* CORAÇÕES CAINDO */
+
+function criarCoracao(){
+
+let c=document.createElement("div");
+
+c.classList.add("coracao");
+
+c.innerHTML="❤️";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.animationDuration=(5+Math.random()*5)+"s";
+
+document.getElementById("coracoes").appendChild(c);
+
+setTimeout(()=>c.remove(),9000);
+
+}
+
+setInterval(criarCoracao,400);
+
+/* EXPLOSÃO FINAL */
+
+function explosaoCoracoes(){
+
+for(let i=0;i<40;i++){
+
+let c=document.createElement("div");
+
+c.classList.add("coracao");
+
+c.innerHTML="💖";
+
+c.style.left="50vw";
+
+c.style.top="50vh";
+
+c.style.animationDuration="3s";
+
+document.body.appendChild(c);
+
+setTimeout(()=>c.remove(),3000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
